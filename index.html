@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>admin1310 ISP Billing Panel</title>
+</head>
+<body>
+
+<h2>ISP Billing Panel Login</h2>
+
+<input id="email" placeholder="Email"><br><br>
+<input id="password" type="password" placeholder="Password"><br><br>
+<button onclick="login()">Login</button>
+
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+  import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyDBBh-fLDnd01KdBJ2cxoLTIacqca3wH6E",
+    authDomain: "admin1310.firebaseapp.com",
+    projectId: "admin1310"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+
+  window.login = function() {
+    signInWithEmailAndPassword(
+      auth,
+      document.getElementById("email").value,
+      document.getElementById("password").value
+    ).then(() => {
+      alert("Login successful");
+    }).catch(err => alert(err.message));
+  }
+</script>
+
+</body>
+</html>
